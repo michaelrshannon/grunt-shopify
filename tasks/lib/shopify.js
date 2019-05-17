@@ -498,6 +498,21 @@ module.exports = function(grunt) {
         });
     };
 
+    shopify.uploadZip = function(name, src, done) {
+        var api = shopify._getApi();
+        api.theme.create({theme: {name: name, src: src}}, function(err, obj) {
+            if (err) {
+                console.log(err);
+                if (err.raw) {
+                    console.log(err.raw.detail.src);
+                }
+            } else {
+                console.log(obj.theme.id);
+            }
+            done();
+        });
+    };
+
     /*
      * Sync local files to Shopify based on last modified date
      *

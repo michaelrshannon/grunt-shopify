@@ -58,6 +58,11 @@ module.exports = function(grunt) {
         shopify.sync(done);
     });
 
+    grunt.registerTask('shopify:uploadZip', 'Upload zip from public url', function() {
+        var done = this.async();
+        shopify.uploadZip(grunt.option('name'), grunt.option('src'), done);
+    });
+
     /**
      * Grunt watch event
      */
